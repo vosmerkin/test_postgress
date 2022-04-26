@@ -4,16 +4,16 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
-@Table(name = "salary")
-public class Salary {
+@Table(name = "cars")
+public class Car {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @Column
-    private int salary;
+    @Column(name = "carmake")
+    private int carMake;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "salary")
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "car")
     private List<Name> names;
 
     public int getId() {
@@ -25,10 +25,10 @@ public class Salary {
     }
 
     public int getSalary() {
-        return salary;
+        return carMake;
     }
 
-    public void setSalary(int salary) {
-        this.salary = salary;
+    public void setSalary(int carMake) {
+        this.carMake = carMake;
     }
 }
