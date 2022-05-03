@@ -8,27 +8,27 @@ import java.util.List;
 public class Car {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Integer id;
 
     @Column(name = "carmake")
-    private int carMake;
+    private String carMake;
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "car")
     private List<Name> names;
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
-    public int getSalary() {
+    public String getCarMake() {
         return carMake;
     }
 
-    public void setSalary(int carMake) {
+    public void setCarMake(String carMake) {
         this.carMake = carMake;
     }
 }

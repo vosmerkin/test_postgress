@@ -5,19 +5,22 @@ import javax.persistence.*;
 @Entity
 @Table(name = "names")
 public class Name {
+    public Name(String name) {
+        this.name = name;
+    }
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Integer id;
 
     @Column
     private String name;
 
     @Column(name="carid")
-    private String carId;
+    private Integer carId;
 
     @Column(name="salaryid")
-    private String salaryId;
+    private Integer salaryId;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "car_id")
@@ -27,19 +30,21 @@ public class Name {
     @JoinColumn(name = "salary_id")
     private Salary salary;
 
-    public String getCarId() {
+
+
+    public Integer getCarId() {
         return carId;
     }
 
-    public void setCarId(String carId) {
+    public void setCarId(Integer carId) {
         this.carId = carId;
     }
 
-    public String getSalaryId() {
+    public Integer getSalaryId() {
         return salaryId;
     }
 
-    public void setSalaryId(String salaryId) {
+    public void setSalaryId(Integer salaryId) {
         this.salaryId = salaryId;
     }
 
@@ -51,11 +56,22 @@ public class Name {
         this.name = name;
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
+    }
+
+
+    @Override
+    public String toString() {
+        return "{\"name\":{" +
+                "\"id\":\""+ id +"\""+
+                ",\"name\":\""+ name +"\""+
+                ",\"carId\":\""+ carId +"\""+
+                ",\"salaryId\":\""+ salaryId +"\""+
+                "}}";
     }
 }

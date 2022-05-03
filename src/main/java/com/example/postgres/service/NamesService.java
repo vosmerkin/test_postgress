@@ -22,9 +22,8 @@ public class NamesService {
         return nameRepo.findAllByName(name);
     }
 
-    public Name save(String name){
-        Name nameEntity = new Name();
-        nameEntity.setName(name);
+    public Name save(Name nameEntity){
+
 //        nameEntity.setId(this.findTopByOrderByIdDesc() + 1);
         nameRepo.save(nameEntity);
         nameRepo.flush();
