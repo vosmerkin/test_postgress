@@ -18,7 +18,7 @@ public class NamesService {
         this.nameRepo = nameRepo;
     }
 
-    public List<Name> findAllByName(String name) {
+    public List<Name> findAllByFirstName(String name) {
         return nameRepo.findAllByName(name);
     }
 

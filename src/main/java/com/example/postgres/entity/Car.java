@@ -31,4 +31,13 @@ public class Car {
     public void setCarMake(String carMake) {
         this.carMake = carMake;
     }
+
+    @Override
+    public String toString() {
+        return "Car{" +
+                "id=" + id +
+                ", carMake='" + carMake + '\'' +
+                ", names=" + names +
+                '}';
+    }
 }

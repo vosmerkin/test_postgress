@@ -1,6 +1,7 @@
 package com.example.postgres.controllers;
 
 import com.example.postgres.entity.Name;
+import com.example.postgres.service.CarService;
 import com.example.postgres.service.NamesService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -10,14 +11,14 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-public class AddNamesController {
+public class CarController {
 
     @Autowired
-    private NamesService namesService;
+    private CarService carService;
 
-    @GetMapping("/namesService")
-    public List<Name> namesService(@RequestParam(value = "name", defaultValue = "*") String name) {
-        System.out.println(this.getClass() + "___" + name);
-        return namesService.findAllByName(name);
+    @GetMapping("/carOwners")
+    public List<Name> getCarOwners(@RequestParam(value = "carmake", defaultValue = "*") String carMake) {
+        System.out.println(this.getClass() + "___" + carMake);
+        return carService.findCarOwnersByCarMake(carMake);
     }
 }
