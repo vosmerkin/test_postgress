@@ -51,7 +51,7 @@ public class NamesCrudController {
         log.info(this.getClass().getName()
                 + "__CRUDdeleteNames_"
                 + name);
-        if (name != "")
+        if (!"".equals(name))
             return namesService.delete(name);
         return null;
 //        curl -X DELETE http://localhost:8080/CRUDdeletenames?name=jjj

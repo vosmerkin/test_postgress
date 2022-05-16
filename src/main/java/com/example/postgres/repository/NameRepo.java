@@ -15,5 +15,5 @@ public interface NameRepo extends JpaRepository<Name, Integer> {
 
     Name getById(Integer id);
 
-    void delete(Name entity);
+//    void delete(Name entity);
 }
