@@ -9,10 +9,8 @@ import java.util.List;
 
 @Repository
 public interface CarRepo extends JpaRepository<Car, Long> {
-    List<Car> findAllByCarMake(String carMake);
-
-
+//    List<Car> findAllByCarMake(String carMake);
 //    List<Name> findAllNamesById(Integer id);
-    Integer findIdByCarMake(String carMake);
-    List<Car> findAllCarByCarMake(String carMake);
+//    Integer findIdByCarMake(String carMake);
+    Car findCarByCarmake(String carMake);
 }

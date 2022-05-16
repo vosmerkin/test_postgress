@@ -11,7 +11,7 @@ public class Car {
     private Integer id;
 
     @Column(name = "carmake")
-    private String carMake;
+    private String carmake;
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "car")
     private List<Name> names;
@@ -24,19 +24,19 @@ public class Car {
         this.id = id;
     }
 
-    public String getCarMake() {
-        return carMake;
+    public String getCarmake() {
+        return carmake;
     }
 
-    public void setCarMake(String carMake) {
-        this.carMake = carMake;
+    public void setCarmake(String carmake) {
+        this.carmake = carmake;
     }
 
     @Override
     public String toString() {
         return "Car{" +
                 "id=" + id +
-                ", carMake='" + carMake + '\'' +
+                ", carMake='" + carmake + '\'' +
                 ", names=" + names +
                 '}';
     }

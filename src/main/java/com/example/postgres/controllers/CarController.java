@@ -2,7 +2,6 @@ package com.example.postgres.controllers;
 
 import com.example.postgres.entity.Name;
 import com.example.postgres.service.CarService;
-import com.example.postgres.service.NamesService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;

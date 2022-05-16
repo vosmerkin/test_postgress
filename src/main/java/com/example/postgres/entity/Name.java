@@ -3,6 +3,8 @@ package com.example.postgres.entity;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectWriter;
+import lombok.Getter;
+import lombok.Setter;
 
 import javax.persistence.*;
 
@@ -20,25 +22,39 @@ public class Name {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Column(name="name")
+    //    @Column(name="name")
     private String name;
 
-    @Column(name="carid")
+    @Column(name = "car_id")
+    @Getter
+    @Setter
     private Integer carId;
+//
+//    @Column(name="salary_id")
+//    private Integer salaryId;
 
-    @Column(name="salaryid")
-    private Integer salaryId;
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "carid")
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "car_id", insertable = false, updatable = false)
     private Car car;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "salary_id")
     private Salary salary;
 
+    @Override
+    public String toString() {
+        String carMake = null;
+        Integer salaryAmt = null;
+        if (car != null) carMake = car.getCarmake();
+        if (salary != null) salaryAmt = salary.getSalary();
 
-
+        return "Name{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", car=" + carMake +
+                ", salary=" + salaryAmt +
+                '}';
+    }
 //    public Integer getCarId() {
 //        return carId;
 //    }
@@ -71,18 +87,7 @@ public class Name {
         this.id = id;
     }
 
-
-//    @Override
-//    public String toString() {
-//        return " { \\\"name\\\": { " +
-//                "\\\"id\\\": \\\""+ id +"\\\""+
-//                ", \\\"firstName\\\": \\\""+ firstName +"\\\""+
-//                ", \\\"carId\\\": \\\""+ carId +"\\\""+
-//                ", \\\"salaryId\\\": \\\""+ salaryId +"\\\""+
-//                " } }";
-//    }
-
-    public String toJson(){
+    public String toJson() {
 
         var ow = new ObjectMapper();
 

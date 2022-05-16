@@ -21,8 +21,8 @@ public class CarService {
     }
 
     public List<Name> findCarOwnersByCarMake(String carMake){
-    List <Car> cars = carRepo.findAllCarByCarMake(carMake);
-        System.out.println(cars);
+    Car car = carRepo.findCarByCarmake(carMake);
+        System.out.println(car);
 //        Integer carId = carRepo.findIdByCarMake(carMake);
 ////
 //        return carRepo.findAllNamesById(carId);

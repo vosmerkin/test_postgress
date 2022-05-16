@@ -1,6 +1,7 @@
 package com.example.postgres.service;
 
 import com.example.postgres.entity.Name;
+import com.example.postgres.repository.NameCrudRepo;
 import com.example.postgres.repository.NameRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,7 +14,6 @@ public class NamesService {
     @Autowired
     private final NameRepo nameRepo;
 
-
     public NamesService(NameRepo nameRepo) {
         this.nameRepo = nameRepo;
     }
@@ -22,7 +22,12 @@ public class NamesService {
         return nameRepo.findAllByName(name);
     }
 
-    public Name save(Name nameEntity){
+    public Name getById(Integer id) {
+//        return nameRepo.getById(id);
+        return nameRepo.findById(id).get();
+    }
+
+    public Name save(Name nameEntity) {
 
 //        nameEntity.setId(this.findTopByOrderByIdDesc() + 1);
         nameRepo.save(nameEntity);
@@ -31,12 +36,23 @@ public class NamesService {
         return nameEntity;
     }
 
-    public int findTopByOrderByIdDesc(){
+    public int findTopByOrderByIdDesc() {
         List<Name> list = nameRepo.findTopByOrderByIdDesc();
         System.out.println(list);
         System.out.println(list.get(0));
         System.out.println(list.get(0).getId());
         return list.get(0).getId();
+    }
+
+    public Name delete(String name) {
+        List<Name> names = nameRepo.findAllByName(name);
+        if (names.size() == 1) {
+
+            System.out.println(names.get(0).getName() + " deleted");
+            nameRepo.delete(names.get(0));
+            return names.get(0);
+        }
+        return null;
     }
 
 
