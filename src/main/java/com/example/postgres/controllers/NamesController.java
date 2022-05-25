@@ -34,6 +34,7 @@ public class NamesController {
 //        curl -XPOST -H "Content-Type:application/json"   --data-raw '{"id" : null,"name" : "Peter"}' http://localhost:8080/CRUDaddnames
 
 
+
         String curlString = "curl -XPOST -H \"Content-Type:application/json\" "
                 + "  --data-raw '%s' http://localhost:8080/CRUDaddnames";
 

@@ -1,8 +1,8 @@
 package com.example.postgres.entity;
 
+import com.example.postgres.dto.*;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.ObjectWriter;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -18,6 +18,8 @@ public class Name {
     public Name() {
     }
 
+    //    @Min(value = 1, message = "Id can't be less than 1 or bigger than 999999")
+//    @Max(999999)
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
@@ -29,17 +31,26 @@ public class Name {
     @Getter
     @Setter
     private Integer carId;
-//
-//    @Column(name="salary_id")
-//    private Integer salaryId;
+
+    @Column(name = "salary_id")
+    @Getter
+    @Setter
+    private Integer salaryId;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "car_id", insertable = false, updatable = false)
     private Car car;
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "salary_id")
+    @JoinColumn(name = "salary_id", insertable = false, updatable = false)
     private Salary salary;
+
+    public Name(Integer id, String name, Integer carId, Integer salaryId) {
+        this.id = id;
+        this.name = name;
+        this.carId = carId;
+        this.salaryId = salaryId;
+    }
 
     @Override
     public String toString() {
@@ -55,21 +66,6 @@ public class Name {
                 ", salary=" + salaryAmt +
                 '}';
     }
-//    public Integer getCarId() {
-//        return carId;
-//    }
-//
-//    public void setCarId(Integer carId) {
-//        this.carId = carId;
-//    }
-//
-//    public Integer getSalaryId() {
-//        return salaryId;
-//    }
-//
-//    public void setSalaryId(Integer salaryId) {
-//        this.salaryId = salaryId;
-//    }
 
     public String getName() {
         return name;
@@ -101,4 +97,9 @@ public class Name {
         }
         return json;
     }
+
+    public NameDto toDto() {
+        return new NameDto(id,name,carId,salaryId);
+    }
+
 }

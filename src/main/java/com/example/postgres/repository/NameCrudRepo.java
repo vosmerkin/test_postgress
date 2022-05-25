@@ -6,7 +6,7 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-@Repository
+//@Repository
 public interface NameCrudRepo extends CrudRepository <Name, Long> {
     List<Name> findAllByName(String name);
 

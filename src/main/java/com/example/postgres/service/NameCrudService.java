@@ -14,13 +14,13 @@ public class NameCrudService {
         this.nameCrudRepo = nameCrudRepo;
     }
 
-    public void delete(String name){
-        List<Name> names = nameCrudRepo.findAllByName(name);
-        if (names.size() == 1) {
-            nameCrudRepo.delete(names.get(0));
-            System.out.println(names.get(0).getName() + " deleted");
-        }
-    }
+//    public void delete(String name){
+//        List<Name> names = nameCrudRepo.findAllByName(name);
+//        if (names.size() == 1) {
+//            nameCrudRepo.delete(names.get(0));
+//            System.out.println(names.get(0).getName() + " deleted");
+//        }
+//    }
 
 
 

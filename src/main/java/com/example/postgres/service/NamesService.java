@@ -23,17 +23,27 @@ public class NamesService {
     }
 
     public Name getById(Integer id) {
-//        return nameRepo.getById(id);
         return nameRepo.findById(id).get();
     }
 
     public Name save(Name nameEntity) {
-
-//        nameEntity.setId(this.findTopByOrderByIdDesc() + 1);
         nameRepo.save(nameEntity);
-        nameRepo.flush();
+//        nameRepo.flush();
         System.out.println(nameEntity.getId());
         return nameEntity;
+    }
+
+    public Name updateName(Name nameEntity) {
+        Name existingEntity = nameRepo.getById(nameEntity.getId());
+        existingEntity.setName(nameEntity.getName());
+//        if (existingNameEntity != null) {
+//            if (nameEntity.getName() != null) existingNameEntity.setName(nameEntity.getName());
+//            if (nameEntity.getCarId() != null) existingNameEntity.setCarId(nameEntity.getCarId());
+//        }
+        nameRepo.save(existingEntity);
+//        nameRepo.flush();
+        System.out.println(nameEntity.getId());
+        return existingEntity;
     }
 
     public int findTopByOrderByIdDesc() {
@@ -44,15 +54,16 @@ public class NamesService {
         return list.get(0).getId();
     }
 
-    public Name delete(String name) {
+
+    public boolean delete(String name) {
+        boolean result = false;
         List<Name> names = nameRepo.findAllByName(name);
         if (names.size() == 1) {
-
             System.out.println(names.get(0).getName() + " deleted");
             nameRepo.delete(names.get(0));
-            return names.get(0);
+            result = true;
         }
-        return null;
+        return result;
     }
 
 
