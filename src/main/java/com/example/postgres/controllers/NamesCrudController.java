@@ -23,7 +23,6 @@ public class NamesCrudController {
 
     @GetMapping("/CRUDgetnames")
     public List<Name> getNames(@RequestParam(value = "name", defaultValue = "*") String name) {
-        log.info(this.getClass() + "___" + name);
         log.info("__CRUDgetnames_{}", name);
         return namesService.findAllByFirstName(name);
     }

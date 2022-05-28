@@ -25,6 +25,7 @@ public class ErrorHandlingControllerAdvice {
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     @ResponseBody
     ValidationErrorResponse onConstraintValidationException(ConstraintViolationException e) {
+//        e.getLocalizedMessage()
         log.info("onConstraintValidationException");
         ValidationErrorResponse error = new ValidationErrorResponse();
         for (ConstraintViolation violation : e.getConstraintViolations()) {

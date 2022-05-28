@@ -1,7 +1,6 @@
 package com.example.postgres.service;
 
 import com.example.postgres.entity.Name;
-import com.example.postgres.repository.NameCrudRepo;
 import com.example.postgres.repository.NameRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
