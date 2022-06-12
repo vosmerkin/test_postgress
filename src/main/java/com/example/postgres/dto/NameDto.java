@@ -8,10 +8,42 @@ import javax.validation.constraints.Null;
 
 public class NameDto {
 
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Integer getCarId() {
+        return carId;
+    }
+
+    public void setCarId(Integer carId) {
+        this.carId = carId;
+    }
+
+    public Integer getSalaryId() {
+        return salaryId;
+    }
+
+    public void setSalaryId(Integer salaryId) {
+        this.salaryId = salaryId;
+    }
+
     public NameDto(@Null(groups = {New.class}) @NotNull(groups = {UpdateName.class}) Integer id,
                    @NotNull(groups = {New.class, UpdateName.class}) String name,
-                   @NotNull(groups = {New.class}) @Null(groups = {UpdateName.class}) Integer carId,
-                   @NotNull(groups = {New.class}) @Null(groups = {UpdateName.class}) Integer salaryId) {
+                   @Null(groups = {New.class, UpdateName.class}) Integer carId,
+                   @Null(groups = {New.class, UpdateName.class}) Integer salaryId) {
         this.id = id;
         this.name = name;
         this.carId = carId;
@@ -24,23 +56,19 @@ public class NameDto {
     public interface UpdateName  {
     }
 
-    @Getter @Setter
     @Null(groups = {New.class})
     @NotNull(groups = {UpdateName.class})
     private Integer id;
 
-    @Getter @Setter
     @NotNull(groups = {New.class, UpdateName.class})
     private String name;
 
-    @Getter @Setter
     @Null(groups = {New.class})
-    @NotNull(groups = {UpdateName.class})
+    @Null(groups = {UpdateName.class})
     private Integer carId;
 
-    @Getter @Setter
     @Null(groups = {New.class})
-    @NotNull(groups = {UpdateName.class})
+    @Null(groups = {UpdateName.class})
     private Integer salaryId;
 
     public Name toEntity(){

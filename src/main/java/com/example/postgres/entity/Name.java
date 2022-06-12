@@ -15,6 +15,38 @@ public class Name {
         this.name = name;
     }
 
+    public Integer getCarId() {
+        return carId;
+    }
+
+    public void setCarId(Integer carId) {
+        this.carId = carId;
+    }
+
+    public Integer getSalaryId() {
+        return salaryId;
+    }
+
+    public void setSalaryId(Integer salaryId) {
+        this.salaryId = salaryId;
+    }
+
+    public Car getCar() {
+        return car;
+    }
+
+    public void setCar(Car car) {
+        this.car = car;
+    }
+
+    public Salary getSalary() {
+        return salary;
+    }
+
+    public void setSalary(Salary salary) {
+        this.salary = salary;
+    }
+
     public Name() {
     }
 
@@ -28,13 +60,9 @@ public class Name {
     private String name;
 
     @Column(name = "car_id")
-    @Getter
-    @Setter
     private Integer carId;
 
     @Column(name = "salary_id")
-    @Getter
-    @Setter
     private Integer salaryId;
 
     @ManyToOne(fetch = FetchType.EAGER)

@@ -36,7 +36,7 @@ public class NamesCrudController {
 
     @PutMapping(value = "/CRUDupdatenames", consumes = MediaType.APPLICATION_JSON_VALUE)
     public Name CRUDupdateNames(@Validated(NameDto.UpdateName.class) @RequestBody NameDto nameDto) {
-        log.info("__CRUDupdatenames_{}", nameDto);
+        log.info("__CRUDupdatenames_{}", nameDto.toEntity().toJson());
         return namesService.updateName(nameDto.toEntity());
 //        curl -XPUT -H "Content-Type:application/json"   --data-raw "{\"id\" :\"6\",\"name\" : \"Peter\"}" http://localhost:8080/CRUDupdatenames
     }

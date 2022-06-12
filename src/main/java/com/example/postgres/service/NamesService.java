@@ -41,7 +41,7 @@ public class NamesService {
 //        }
         nameRepo.save(existingEntity);
 //        nameRepo.flush();
-        System.out.println(nameEntity.getId());
+//        System.out.println(nameEntity.getId());
         return existingEntity;
     }
 
